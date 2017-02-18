@@ -5,5 +5,5 @@ import kotlin.reflect.KProperty
 
 interface UIProperty<out T: Node> {
 
-    operator fun getValue(uiComponent: UIComponent, property: KProperty<*>): T
+    operator fun getValue(uiComponent: UIComponent<*>, property: KProperty<*>): T
 }

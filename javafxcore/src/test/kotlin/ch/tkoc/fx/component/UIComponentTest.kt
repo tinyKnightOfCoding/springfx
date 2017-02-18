@@ -4,11 +4,12 @@ import ch.tkoc.fx.component.example1.LoginView
 import ch.tkoc.fx.launchDummyApplication
 import javafx.scene.Node
 import javafx.scene.layout.FlowPane
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.BeforeClass
 import org.junit.Test
 
-class UIComponentTest{
+class UIComponentTest {
 
     companion object {
 
@@ -21,7 +22,7 @@ class UIComponentTest{
 
     @Test(expected = IllegalStateException::class)
     fun fxmlLocation_notExisting() {
-        val component = UIComponent()
+        val component = UIComponent<Node>()
     }
 
     @Test
@@ -31,9 +32,9 @@ class UIComponentTest{
     }
 
     @Test
-    fun fxmlLoader_loads() {
+    fun fxmlLoader() {
         val component = LoginView()
-        val loaded = component.fxmlLoader.load<Node>()
-        assertTrue(loaded is FlowPane)
+        assertEquals(component, component.fxmlLoader.getController())
+        assertEquals(component.fxmlLocation, component.fxmlLoader.location)
     }
 }
