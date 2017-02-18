@@ -3,7 +3,6 @@ package ch.tkoc.fx.component
 import ch.tkoc.fx.component.example1.LoginView
 import ch.tkoc.fx.launchDummyApplication
 import javafx.scene.Node
-import javafx.scene.layout.FlowPane
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.BeforeClass
