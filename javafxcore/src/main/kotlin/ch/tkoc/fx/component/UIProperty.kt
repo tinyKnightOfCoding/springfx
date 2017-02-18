@@ -1,5 +1,9 @@
 package ch.tkoc.fx.component
 
-/**
- * Created by Kenneth on 18.02.2017.
- */
+import javafx.scene.Node
+import kotlin.reflect.KProperty
+
+interface UIProperty<out T: Node> {
+
+    operator fun getValue(uiComponent: UIComponent<*>, property: KProperty<*>): T
+}
