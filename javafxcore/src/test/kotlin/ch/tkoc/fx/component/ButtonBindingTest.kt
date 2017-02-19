@@ -4,10 +4,8 @@ import ch.tkoc.fx.component.binding.BindingView
 import ch.tkoc.fx.launchDummyApplication
 import javafx.event.ActionEvent
 import javafx.scene.control.Button
-import org.junit.Assert.*
 import org.junit.BeforeClass
 import org.junit.Test
-import org.mockito.Mockito
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 
