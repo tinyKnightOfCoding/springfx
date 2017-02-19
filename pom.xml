@@ -7,7 +7,7 @@
     <groupId>ch.tkoc</groupId>
     <artifactId>springfx-all</artifactId>
     <packaging>pom</packaging>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.3-SNAPSHOT</version>
     <description>spring + javafx + kotlin = cool stuff bro</description>
 
     <developers>
@@ -27,7 +27,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!--PROJECT VERSION-->
-        <springfx.version>0.2-SNAPSHOT</springfx.version>
+        <springfx.version>0.3-SNAPSHOT</springfx.version>
 
         <!--LANGUAGE VERSIONS-->
         <kotlin.version>1.0.6</kotlin.version>
