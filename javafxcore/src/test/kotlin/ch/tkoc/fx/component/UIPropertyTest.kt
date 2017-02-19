@@ -24,7 +24,7 @@ class UIPropertyTest {
         LoginViewWrongType().email
         fail()
     } catch(ex: IllegalArgumentException) {
-        assertEquals("Property email could not be assigned to javafx.scene.control.PasswordField.", ex.message)
+        assertEquals("Element email could not be assigned to class javafx.scene.control.PasswordField.", ex.message)
     }
 
     @Test
@@ -32,7 +32,7 @@ class UIPropertyTest {
         LoginViewWrongId().username
         fail()
     } catch(ex: IllegalArgumentException) {
-        assertEquals("Property username could not be found in namespace.", ex.message)
+        assertEquals("Element username could not be found in namespace.", ex.message)
     }
 }
 

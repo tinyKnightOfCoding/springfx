@@ -21,7 +21,7 @@ class UIComponentTest {
 
     @Test(expected = IllegalStateException::class)
     fun fxmlLocation_notExisting() {
-        val component = UIComponent<Node>()
+        val component = UiComponent<Node>()
     }
 
     @Test
