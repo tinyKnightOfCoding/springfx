@@ -32,4 +32,6 @@ open class Component<out T : Node> {
     inline fun <reified P : Node> fxid(id: String? = null) = Property(id, P::class)
 
     fun textfield(id: String? = null) = TextFieldBinding(id)
+
+    fun button(id: String? = null) = ButtonBinding(id)
 }
