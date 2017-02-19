@@ -1,12 +1,12 @@
-package ch.tkoc.fx.component.example1
+package ch.tkoc.fx.component.property
 
-import ch.tkoc.fx.component.UiComponent
+import ch.tkoc.fx.component.Component
 import javafx.scene.control.Button
 import javafx.scene.control.PasswordField
 import javafx.scene.control.TextField
 import javafx.scene.layout.FlowPane
 
-class LoginView: UiComponent<FlowPane>() {
+class PropertyView : Component<FlowPane>() {
 
     val email: TextField by fxid()
     val password: PasswordField by fxid()
