@@ -5,7 +5,8 @@
     <parent>
         <artifactId>springfx-all</artifactId>
         <groupId>ch.tkoc</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+        <version>0.3-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
