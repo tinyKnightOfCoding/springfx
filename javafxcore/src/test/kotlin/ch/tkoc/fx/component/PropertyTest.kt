@@ -1,14 +1,14 @@
 package ch.tkoc.fx.component
 
-import ch.tkoc.fx.component.example1.LoginViewWrongId
-import ch.tkoc.fx.component.example1.LoginViewWrongType
+import ch.tkoc.fx.component.property.PropertyViewWrongId
+import ch.tkoc.fx.component.property.PropertyViewWrongType
 import ch.tkoc.fx.launchDummyApplication
 import org.junit.Assert.assertEquals
 import org.junit.Assert.fail
 import org.junit.BeforeClass
 import org.junit.Test
 
-class UIPropertyTest {
+class PropertyTest {
 
     companion object {
 
@@ -21,18 +21,18 @@ class UIPropertyTest {
 
     @Test
     fun wrongType() = try {
-        LoginViewWrongType().email
+        PropertyViewWrongType().email
         fail()
     } catch(ex: IllegalArgumentException) {
-        assertEquals("Property email could not be assigned to javafx.scene.control.PasswordField.", ex.message)
+        assertEquals("Element email could not be assigned to class javafx.scene.control.PasswordField.", ex.message)
     }
 
     @Test
     fun notExisting() = try {
-        LoginViewWrongId().username
+        PropertyViewWrongId().username
         fail()
     } catch(ex: IllegalArgumentException) {
-        assertEquals("Property username could not be found in namespace.", ex.message)
+        assertEquals("Element username could not be found in namespace.", ex.message)
     }
 }
 
