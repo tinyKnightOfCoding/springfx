@@ -5,11 +5,11 @@ import kotlin.reflect.KProperty
 
 class TextFieldBinding(val id: String?): Binding<String> {
 
-    override fun getValue(uiComponent: Component<*>, property: KProperty<*>): String = findTextField(property, uiComponent).text
+    override fun getValue(uiView: View<*>, property: KProperty<*>): String = findTextField(property, uiView).text
 
-    override fun setValue(uiComponent: Component<*>, property: KProperty<*>, value: String) {
-        findTextField(property, uiComponent).text = value
+    override fun setValue(uiView: View<*>, property: KProperty<*>, value: String) {
+        findTextField(property, uiView).text = value
     }
 
-    private fun findTextField(property: KProperty<*>, uiComponent: Component<*>) = uiComponent.findElementById(id ?: property.name, TextField::class)
+    private fun findTextField(property: KProperty<*>, uiView: View<*>) = uiView.findElementById(id ?: property.name, TextField::class)
 }

@@ -1,11 +1,11 @@
 package ch.tkoc.fx.component.binding
 
-import ch.tkoc.fx.component.Component
+import ch.tkoc.fx.component.View
 import javafx.event.ActionEvent
 import javafx.scene.layout.FlowPane
 
 
-class BindingView : Component<FlowPane>() {
+class BindingView : View<FlowPane>() {
 
     var email: String by textfield()
 

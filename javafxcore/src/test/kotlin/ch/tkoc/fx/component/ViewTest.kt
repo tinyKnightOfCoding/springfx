@@ -2,13 +2,13 @@ package ch.tkoc.fx.component
 
 import ch.tkoc.fx.component.property.PropertyView
 import ch.tkoc.fx.launchDummyApplication
-import javafx.scene.Node
+import javafx.scene.Parent
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.BeforeClass
 import org.junit.Test
 
-class ComponentTest {
+class ViewTest {
 
     companion object {
 
@@ -21,7 +21,7 @@ class ComponentTest {
 
     @Test(expected = IllegalStateException::class)
     fun fxmlLocation_notExisting() {
-        val component = Component<Node>()
+        val component = View<Parent>()
     }
 
     @Test

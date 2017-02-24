@@ -1,10 +1,10 @@
 package ch.tkoc.fx.component.property
 
-import ch.tkoc.fx.component.Component
+import ch.tkoc.fx.component.View
 import javafx.scene.control.TextField
 import javafx.scene.layout.FlowPane
 
-class PropertyViewWrongId : Component<FlowPane>() {
+class PropertyViewWrongId : View<FlowPane>() {
 
     val username: TextField by fxid()
 }

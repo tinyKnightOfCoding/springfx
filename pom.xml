@@ -19,6 +19,8 @@
 
     <modules>
         <module>javafxcore</module>
+        <module>springfxcontext</module>
+        <module>javafxtest</module>
     </modules>
 
     <properties>
@@ -93,6 +95,24 @@
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
                 <version>${aspectj.version}</version>
+            </dependency>
+
+            <!--MODULE DEPENDENCIES-->
+            <dependency>
+                <groupId>ch.tkoc</groupId>
+                <artifactId>javafx-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.tkoc</groupId>
+                <artifactId>springfx-context</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.tkoc</groupId>
+                <artifactId>javafx-test</artifactId>
+                <version>${project.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
