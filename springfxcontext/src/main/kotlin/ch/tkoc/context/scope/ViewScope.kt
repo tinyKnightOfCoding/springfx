@@ -4,6 +4,7 @@ import org.springframework.beans.factory.ObjectFactory
 import org.springframework.beans.factory.config.Scope
 import org.springframework.stereotype.Component
 
+//TODO write unit tests, as as it gets complicated
 @Component("ch.tkoc.context.scope.viewScope")
 class ViewScope: Scope {
 

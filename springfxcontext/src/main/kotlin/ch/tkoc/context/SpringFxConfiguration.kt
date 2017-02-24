@@ -1,6 +1,7 @@
 package ch.tkoc.context
 
 import ch.tkoc.context.scope.ViewScope
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.config.CustomScopeConfigurer
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
@@ -10,10 +11,13 @@ import org.springframework.context.annotation.Configuration
 @ComponentScan("ch.tkoc.context")
 class SpringFxConfiguration {
 
+    companion object {
 
-    val customScopeConfigurer: CustomScopeConfigurer
-    @Bean(name= arrayOf("ch.tkoc.context.viewScopeConfigurer"))
-    get() = CustomScopeConfigurer().apply {
-        addScope("view", ViewScope())
+        @Bean(name= arrayOf("ch.tkoc.context.viewScopeConfigurer"))
+        @JvmStatic
+        fun viewScopeConfigurer(@Autowired viewScope: ViewScope) = CustomScopeConfigurer().apply {
+            addScope("view", ViewScope())
+        }
+
     }
 }

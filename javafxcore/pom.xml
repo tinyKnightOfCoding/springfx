@@ -21,6 +21,10 @@
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-reflect</artifactId>
         </dependency>
+        <dependency>
+            <groupId>ch.tkoc</groupId>
+            <artifactId>javafx-test</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

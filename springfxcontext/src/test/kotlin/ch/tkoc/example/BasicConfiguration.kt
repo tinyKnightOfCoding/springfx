@@ -1,6 +1,7 @@
-package ch.tkoc.context.example
+package ch.tkoc.example
 
 import ch.tkoc.context.launch
+import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
 
 
@@ -9,5 +10,5 @@ fun main(vararg args: String) {
 }
 
 @Configuration
-//no package scan, because we are in range of SpringFxConfiguration
+@ComponentScan("ch.tkoc.example")
 class BasicConfiguration

@@ -23,28 +23,20 @@ private var configurationClass: KClass<*>? = null
 
 class SpringFxApplication : Application() {
 
-    lateinit var appContext: ApplicationContext
+    lateinit var appContext: JavaFxAwareApplicationContext
     lateinit var stage: Stage
 
     override fun start(primaryStage: Stage) {
         stage = primaryStage
-        appContext = AnnotationConfigApplicationContext(configurationClass!!.java, SpringFxConfiguration::class.java)
+        appContext = JavaFxAwareApplicationContext(configurationClass!!.java)
         renderInitialView()
     }
 
-    private fun renderInitialView() {
-        val initialView = findInitialView()
-        render(initialView)
-    }
+    private fun renderInitialView() = render(appContext.findInitialView())
 
     fun render(view: View<*>) = stage.apply {
         scene = Scene(view.root)
         show()
     }
-
-    fun findInitialView(): View<*> = appContext.getBeansOfType(View::class.java)
-            .map{it.value}
-            .filter { it.javaClass.findAnnotation<FxView>()?.initial ?: false }
-            .first()
 }
 
