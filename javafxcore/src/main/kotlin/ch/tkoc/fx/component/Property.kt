@@ -6,5 +6,5 @@ import kotlin.reflect.KProperty
 
 class Property<E: Node>(val id: String?, val type: KClass<E>) {
 
-    operator fun getValue(uiComponent: Component<*>, property: KProperty<*>): E = uiComponent.findElementById(id ?: property.name, type)
+    operator fun getValue(uiView: View<*>, property: KProperty<*>): E = uiView.findElementById(id ?: property.name, type)
 }

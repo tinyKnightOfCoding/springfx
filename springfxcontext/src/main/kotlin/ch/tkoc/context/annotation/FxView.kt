@@ -5,4 +5,4 @@ import org.springframework.stereotype.Component
 
 @Scope("view")
 @Component
-annotation class View
+annotation class FxView(val initial: Boolean = false)

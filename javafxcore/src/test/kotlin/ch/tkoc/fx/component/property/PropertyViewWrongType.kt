@@ -1,10 +1,10 @@
 package ch.tkoc.fx.component.property
 
-import ch.tkoc.fx.component.Component
+import ch.tkoc.fx.component.View
 import javafx.scene.control.PasswordField
 import javafx.scene.layout.FlowPane
 
-class PropertyViewWrongType : Component<FlowPane>() {
+class PropertyViewWrongType : View<FlowPane>() {
 
     val email: PasswordField by fxid()
 }

@@ -2,18 +2,19 @@ package ch.tkoc.fx.component
 
 import javafx.fxml.FXMLLoader
 import javafx.scene.Node
+import javafx.scene.Parent
 import java.net.URL
 import kotlin.reflect.KClass
 
 /**
  * a class that corresponds to an fxml file.
  */
-open class Component<out T : Node> {
+open class View<out T : Parent> {
 
     val fxmlLocation: URL = javaClass.getResource("${javaClass.simpleName}.fxml") ?: throw IllegalStateException("could not find fxml for $javaClass")
 
     val fxmlLoader: FXMLLoader = FXMLLoader(fxmlLocation).apply {
-        setController(this@Component)
+        setController(this@View)
     }
 
     val root: T = fxmlLoader.load()

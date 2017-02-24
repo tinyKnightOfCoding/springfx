@@ -1,6 +1,5 @@
 package ch.tkoc.context.scope
 
-import org.jetbrains.annotations.Mutable
 import org.springframework.beans.factory.ObjectFactory
 import org.springframework.beans.factory.config.Scope
 import org.springframework.stereotype.Component
@@ -17,7 +16,7 @@ class ViewScope: Scope {
     override fun registerDestructionCallback(name: String, callback: Runnable) {
     }
 
-    override fun getConversationId(): String = "View"
+    override fun getConversationId(): String = "FxView"
 
     override fun get(name: String, objectFactory: ObjectFactory<*>): Any = objects.getOrPut(name, {objectFactory.`object`})
 }
