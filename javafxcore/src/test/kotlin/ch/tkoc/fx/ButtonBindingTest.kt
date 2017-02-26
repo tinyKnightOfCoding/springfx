@@ -16,12 +16,12 @@ class ButtonBindingTest {
         fun setUpApplication() = launchDummyApplication()
     }
 
-    @org.junit.Test
+    @Test(expected = NullPointerException::class)
     fun initialValue() {
         BindingView().login(javafx.event.ActionEvent())
     }
 
-    @org.junit.Test
+    @Test
     fun setValue() {
         val mockedEvent = mock(javafx.event.ActionEvent::class.java)
         BindingView().apply {
