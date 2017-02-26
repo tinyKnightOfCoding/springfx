@@ -1,9 +1,8 @@
 package ch.tkoc.fx
 
-import ch.tkoc.fx.component.binding.BindingView
-import ch.tkoc.fx.launchDummyApplication
+import ch.tkoc.fx.binding.BindingView
 import javafx.scene.control.TextField
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.BeforeClass
 import org.junit.Test

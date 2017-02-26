@@ -1,7 +1,7 @@
 package ch.tkoc.context
 
 import ch.tkoc.context.annotation.FxView
-import ch.tkoc.fx.component.View
+import ch.tkoc.fx.View
 import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 

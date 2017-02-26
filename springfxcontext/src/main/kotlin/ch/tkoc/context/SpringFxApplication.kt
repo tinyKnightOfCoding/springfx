@@ -1,14 +1,12 @@
 package ch.tkoc.context
 
-import ch.tkoc.context.annotation.FxView
-import ch.tkoc.fx.component.View
+import ch.tkoc.fx.View
 import javafx.application.Application
 import javafx.scene.Scene
 import javafx.stage.Stage
-import org.springframework.context.ApplicationContext
-import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.core.annotation.AnnotationUtils
 import kotlin.reflect.KClass
+
 //TODO refactor to separate file
 inline fun <reified A: Annotation> Class<*>.findAnnotation(): A? = AnnotationUtils.findAnnotation(this, A::class.java)
 

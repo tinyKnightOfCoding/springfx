@@ -1,6 +1,6 @@
 package ch.tkoc.fx.binding
 
-import ch.tkoc.fx.component.View
+import ch.tkoc.fx.View
 import javafx.event.ActionEvent
 import javafx.scene.layout.FlowPane
 

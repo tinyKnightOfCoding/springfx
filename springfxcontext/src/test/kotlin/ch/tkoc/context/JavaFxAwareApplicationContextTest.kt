@@ -24,7 +24,6 @@ class JavaFxAwareApplicationContextTest {
     @Test(expected = NoSuchElementException::class)
     fun noViews() {
         JavaFxAwareApplicationContext(NoViews::class.java).apply {
-            beanDefinitionNames.forEach { println("- $it") }
             findInitialView()
         }
     }

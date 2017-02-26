@@ -1,10 +1,8 @@
 package ch.tkoc.fx
 
-import ch.tkoc.fx.component.binding.BindingView
-import ch.tkoc.fx.launchDummyApplication
+import ch.tkoc.fx.binding.BindingView
 import javafx.event.ActionEvent
 import javafx.scene.control.Button
-import org.junit.BeforeClass
 import org.junit.Test
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
@@ -15,7 +13,7 @@ class ButtonBindingTest {
 
         @JvmStatic
         @org.junit.BeforeClass
-        fun setUpApplication() = ch.tkoc.fx.launchDummyApplication()
+        fun setUpApplication() = launchDummyApplication()
     }
 
     @org.junit.Test

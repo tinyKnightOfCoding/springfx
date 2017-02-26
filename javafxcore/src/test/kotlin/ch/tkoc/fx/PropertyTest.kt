@@ -1,8 +1,7 @@
 package ch.tkoc.fx
 
-import ch.tkoc.fx.component.property.PropertyViewWrongId
-import ch.tkoc.fx.component.property.PropertyViewWrongType
-import ch.tkoc.fx.launchDummyApplication
+import ch.tkoc.fx.property.PropertyViewWrongId
+import ch.tkoc.fx.property.PropertyViewWrongType
 import org.junit.Assert.assertEquals
 import org.junit.Assert.fail
 import org.junit.BeforeClass

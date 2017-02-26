@@ -1,7 +1,6 @@
 package ch.tkoc.fx
 
-import ch.tkoc.fx.component.property.PropertyView
-import ch.tkoc.fx.launchDummyApplication
+import ch.tkoc.fx.property.PropertyView
 import javafx.scene.Parent
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
