@@ -28,7 +28,7 @@ class TextFieldBindingTest {
     @Test
     fun setText() {
         view.email = "foo@bar.com"
-        assertEquals("foo@bar.com", view.findElementById("email", TextField::class).text)
+        assertEquals("foo@bar.com", view.root.lookup("#email", TextField::class.java)!!.text)
     }
 
     @Test

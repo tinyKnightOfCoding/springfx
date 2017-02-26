@@ -8,12 +8,13 @@ import kotlin.reflect.KProperty
 class ButtonBinding(val id: String?) : Binding<(ActionEvent) -> Unit> {
 
     override fun getValue(uiView: View<*>, property: KProperty<*>): (ActionEvent) -> Unit = { event: ActionEvent ->
-        findButton(property, uiView).onAction?.handle(event)
+        findButton(uiView, property).onAction?.handle(event)
     }
 
     override fun setValue(uiView: View<*>, property: KProperty<*>, value: (ActionEvent) -> Unit) {
-        findButton(property, uiView).onAction = EventHandler<ActionEvent> { event -> value(event) }
+        findButton(uiView, property).onAction = EventHandler<ActionEvent> { event -> value(event) }
     }
 
-    private fun findButton(property: KProperty<*>, uiView: View<*>) = uiView.findElementById(id ?: property.name, Button::class)
+    private fun findButton(uiView: View<*>, property: KProperty<*>) = uiView.root.lookup("#${id ?: property.name}", Button::class.java) ?:
+            throw IllegalArgumentException("Could not find Element #${id ?: property.name} of type Button.")
 }

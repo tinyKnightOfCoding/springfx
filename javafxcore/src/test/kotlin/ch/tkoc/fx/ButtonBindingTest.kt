@@ -36,7 +36,7 @@ class ButtonBindingTest {
         val mockedEvent = mock(ActionEvent::class.java)
         BindingView().apply {
             login = ActionEvent::consume
-            findElementById("login", Button::class).onAction.handle(mockedEvent)
+            root.lookup("#login", Button::class.java)!!.onAction.handle(mockedEvent)
         }
         verify(mockedEvent).consume()
     }

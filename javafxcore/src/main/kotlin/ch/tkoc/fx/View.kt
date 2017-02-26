@@ -24,17 +24,6 @@ open class View<out T : Parent> {
         return _root!!
     }
 
-    fun <E : Node> findElementById(id: String, type: KClass<E>): E {
-        fxmlLoader.namespace[id]?.let { element ->
-            if(type.java.isInstance(element)) {
-                return element as E
-            } else {
-                throw IllegalArgumentException("Element $id could not be assigned to $type.")
-            }
-        }
-        throw IllegalArgumentException("Element $id could not be found in namespace.")
-    }
-
     inline fun <reified P : Node> fxid(id: String? = null) = Property(id, P::class)
 
     fun textfield(id: String? = null) = TextFieldBinding(id)

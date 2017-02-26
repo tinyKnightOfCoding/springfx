@@ -23,7 +23,7 @@ class PropertyTest {
         PropertyViewWrongType().email
         fail()
     } catch(ex: IllegalArgumentException) {
-        assertEquals("Element email could not be assigned to class javafx.scene.control.PasswordField.", ex.message)
+        assertEquals("Element #email could not be assigned to class javafx.scene.control.PasswordField.", ex.message)
     }
 
     @Test
@@ -31,7 +31,7 @@ class PropertyTest {
         PropertyViewWrongId().username
         fail()
     } catch(ex: IllegalArgumentException) {
-        assertEquals("Element username could not be found in namespace.", ex.message)
+        assertEquals("Element #username could not be found in namespace.", ex.message)
     }
 }
 
