@@ -1,4 +1,4 @@
-package ch.tkoc.fx.component
+package ch.tkoc.fx
 
 import javafx.scene.Node
 import kotlin.reflect.KClass

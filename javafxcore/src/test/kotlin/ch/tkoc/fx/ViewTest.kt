@@ -1,4 +1,4 @@
-package ch.tkoc.fx.component
+package ch.tkoc.fx
 
 import ch.tkoc.fx.component.property.PropertyView
 import ch.tkoc.fx.launchDummyApplication

@@ -1,4 +1,4 @@
-package ch.tkoc.fx.component
+package ch.tkoc.fx
 
 import ch.tkoc.fx.component.binding.BindingView
 import ch.tkoc.fx.launchDummyApplication
@@ -14,20 +14,20 @@ class ButtonBindingTest {
     companion object {
 
         @JvmStatic
-        @BeforeClass
-        fun setUpApplication() = launchDummyApplication()
+        @org.junit.BeforeClass
+        fun setUpApplication() = ch.tkoc.fx.launchDummyApplication()
     }
 
-    @Test
+    @org.junit.Test
     fun initialValue() {
-        BindingView().login(ActionEvent())
+        BindingView().login(javafx.event.ActionEvent())
     }
 
-    @Test
+    @org.junit.Test
     fun setValue() {
-        val mockedEvent = mock(ActionEvent::class.java)
+        val mockedEvent = mock(javafx.event.ActionEvent::class.java)
         BindingView().apply {
-            login = ActionEvent::consume
+            login = javafx.event.ActionEvent::consume
             login(mockedEvent)
         }
         verify(mockedEvent).consume()

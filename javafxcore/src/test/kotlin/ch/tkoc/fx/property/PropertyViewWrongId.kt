@@ -1,4 +1,4 @@
-package ch.tkoc.fx.component.property
+package ch.tkoc.fx.property
 
 import ch.tkoc.fx.component.View
 import javafx.scene.control.TextField

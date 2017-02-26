@@ -1,4 +1,4 @@
-package ch.tkoc.fx.component.binding
+package ch.tkoc.fx.binding
 
 import ch.tkoc.fx.component.View
 import javafx.event.ActionEvent
