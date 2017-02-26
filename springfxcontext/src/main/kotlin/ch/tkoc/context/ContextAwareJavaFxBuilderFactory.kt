@@ -11,8 +11,6 @@ import org.springframework.stereotype.Component
 @Component("ch.tkoc.context.contextAwareJavaFxBuilderFactory")
 class ContextAwareJavaFxBuilderFactory : BuilderFactory, ApplicationContextAware {
 
-    val fallbackFactory = JavaFXBuilderFactory()
-
     lateinit var appContext: ApplicationContext
     lateinit var contextBuildables: Set<Class<*>>
 
@@ -28,10 +26,10 @@ class ContextAwareJavaFxBuilderFactory : BuilderFactory, ApplicationContextAware
     }
 
 
-    override fun getBuilder(type: Class<*>): Builder<*> {
+    override fun getBuilder(type: Class<*>): Builder<*>? {
         if(contextBuildables.contains(type)) {
             return ContextAwareBuilder(appContext, type)
         }
-        return fallbackFactory.getBuilder(type)
+        return null
     }
 }

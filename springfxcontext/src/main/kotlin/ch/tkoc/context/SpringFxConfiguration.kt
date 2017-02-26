@@ -25,7 +25,6 @@ class SpringFxConfiguration {
     @Scope("prototype")
     @Bean(name = arrayOf("ch.tkoc.context.fxmlLoader"))
     fun fxmlLoader(awareControllerFactory: ContextAwareJavaFxControllerFactory, awareBuilderFactory: ContextAwareJavaFxBuilderFactory) = FXMLLoader().apply {
-        setControllerFactory { awareControllerFactory.getBean(it) }
         builderFactory = awareBuilderFactory
     }
 }
