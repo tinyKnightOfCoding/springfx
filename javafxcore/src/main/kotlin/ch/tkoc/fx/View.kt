@@ -22,6 +22,4 @@ open class View<out T : Parent> {
             }
             return _root!!
         }
-
-
 }

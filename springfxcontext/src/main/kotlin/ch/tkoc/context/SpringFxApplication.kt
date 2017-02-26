@@ -36,5 +36,9 @@ class SpringFxApplication : Application() {
         scene = Scene(view.root)
         show()
     }
+
+    fun renderBean(name: String) {
+        render(appContext.getBean(name, View::class.java))
+    }
 }
 

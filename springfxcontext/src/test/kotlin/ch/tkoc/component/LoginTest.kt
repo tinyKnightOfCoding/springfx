@@ -26,4 +26,13 @@ class LoginTest {
         assertSame(loginView, viewScope.objects["loginView"])
         assertEquals(2, viewScope.objects.size)
     }
+
+    @Test
+    fun correctWired() {
+        val context = JavaFxAwareApplicationContext(LoginConfiguration::class.java)
+        val loginView = context.findInitialView()
+        val loginForm = context.getBean(LoginForm::class.java)
+        val potentialForm2 = loginView.root.lookup("#loginForm")
+        assertSame(loginForm, potentialForm2)
+    }
 }

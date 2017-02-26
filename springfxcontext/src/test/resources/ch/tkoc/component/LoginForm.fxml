@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<FlowPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.tkoc.component.LoginForm">
+<fx:root type="FlowPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.tkoc.component.LoginForm">
    <children>
       <TextField fx:id="email" promptText="email">
          <FlowPane.margin>
@@ -23,4 +23,4 @@
          </FlowPane.margin>
       </Button>
    </children>
-</FlowPane>
+</fx:root>

@@ -4,11 +4,10 @@
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import ch.tkoc.component.LoginForm?>
 
 
 <FlowPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <LoginForm fx:id="loginForm"/>
+        <Label text="You are logged in!"/>
     </children>
 </FlowPane>

@@ -14,4 +14,4 @@ fun textfield(id: String? = null) = TextFieldBinding(id)
 
 fun button(id: String? = null) = ButtonBinding(id)
 
-inline fun <reified P : Node> fxid(id: String? = null) = Property(id, P::class)
+inline fun <reified P : Node> fxid(id: String? = null) = Property(id, P::class) //TODO better name perhaps
