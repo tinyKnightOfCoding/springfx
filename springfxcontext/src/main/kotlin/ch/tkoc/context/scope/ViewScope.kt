@@ -1,14 +1,24 @@
 package ch.tkoc.context.scope
 
+import ch.tkoc.fx.View
 import org.springframework.beans.factory.ObjectFactory
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.config.Scope
+import org.springframework.context.ApplicationContext
+import org.springframework.context.ApplicationContextAware
 import org.springframework.stereotype.Component
 
-//TODO write unit tests, as as it gets complicated
+//TODO write unit tests, as it gets complicated
 @Component("ch.tkoc.context.scope.viewScope")
-class ViewScope: Scope {
+class ViewScope: Scope, ApplicationContextAware {
 
-    private val objects: MutableMap<String, Any> = mutableMapOf()
+    lateinit var appContext: ApplicationContext
+
+    override fun setApplicationContext(applicationContext: ApplicationContext) {
+        appContext = applicationContext
+    }
+
+    val objects: MutableMap<String, Any> = mutableMapOf()
 
     override fun resolveContextualObject(key: String): Any? = null
 
@@ -19,5 +29,16 @@ class ViewScope: Scope {
 
     override fun getConversationId(): String = "FxView"
 
-    override fun get(name: String, objectFactory: ObjectFactory<*>): Any = objects.getOrPut(name, {objectFactory.`object`})
+    override fun get(name: String, objectFactory: ObjectFactory<*>): Any =objects.getOrPut(name, {getWithConfiguredControllerFactory(objectFactory)})
+
+    private fun getWithConfiguredControllerFactory(objectFactory: ObjectFactory<*>): Any = objectFactory.`object`.let { bean ->
+        if(bean is View<*>) {
+            println(bean)
+            bean.fxmlLoader.setControllerFactory { type ->
+                println(type)
+                appContext.getBean(type) }
+            bean.root
+        }
+        return bean
+    }
 }

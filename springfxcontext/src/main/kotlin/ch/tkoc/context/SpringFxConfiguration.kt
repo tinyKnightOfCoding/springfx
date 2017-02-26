@@ -16,7 +16,7 @@ class SpringFxConfiguration {
         @Bean(name= arrayOf("ch.tkoc.context.viewScopeConfigurer"))
         @JvmStatic
         fun viewScopeConfigurer(@Autowired viewScope: ViewScope) = CustomScopeConfigurer().apply {
-            addScope("view", ViewScope())
+            addScope("view", viewScope)
         }
 
     }

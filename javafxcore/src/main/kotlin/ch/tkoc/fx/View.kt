@@ -13,11 +13,16 @@ open class View<out T : Parent> {
 
     val fxmlLocation: URL = javaClass.getResource("${javaClass.simpleName}.fxml") ?: throw IllegalStateException("could not find fxml for $javaClass")
 
-    val fxmlLoader: FXMLLoader = FXMLLoader(fxmlLocation).apply {
-        setController(this@View)
-    }
+    val fxmlLoader : FXMLLoader = FXMLLoader(fxmlLocation)
 
-    val root: T = fxmlLoader.load()
+    private var _root: T? = null
+    val root: T
+    get() {
+        if(_root == null) {
+            _root = fxmlLoader.load()
+        }
+        return _root!!
+    }
 
     fun <E : Node> findElementById(id: String, type: KClass<E>): E {
         fxmlLoader.namespace[id]?.let { element ->

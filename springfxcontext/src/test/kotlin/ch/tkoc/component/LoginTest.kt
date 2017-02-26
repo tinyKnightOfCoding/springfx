@@ -1,7 +1,9 @@
 package ch.tkoc.component
 
 import ch.tkoc.context.JavaFxAwareApplicationContext
+import ch.tkoc.context.scope.ViewScope
 import ch.tkoc.fx.launchDummyApplication
+import org.junit.Assert.*
 import org.junit.BeforeClass
 import org.junit.Test
 
@@ -17,6 +19,11 @@ class LoginTest {
     @Test
     fun correctInitialized() {
         val context = JavaFxAwareApplicationContext(LoginConfiguration::class.java)
-
+        val loginView = context.findInitialView()
+        val loginForm = loginView.fxmlLoader.namespace["loginForm"]
+        val viewScope = context.getBean(ViewScope::class.java)
+        assertTrue(loginView is LoginView)
+        assertSame(loginView, viewScope.objects["loginView"])
+        assertEquals(2, viewScope.objects.size)
     }
 }
