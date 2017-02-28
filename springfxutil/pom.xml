@@ -5,12 +5,11 @@
     <parent>
         <artifactId>springfx-all</artifactId>
         <groupId>ch.tkoc</groupId>
-        <version>${project.version}</version>
-        <relativePath>../pom.xml</relativePath>
+        <version>0.3-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>springfx-context</artifactId>
+    <artifactId>springfx-util</artifactId>
 
     <dependencies>
         <dependency>
@@ -24,14 +23,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.tkoc</groupId>
-            <artifactId>javafx-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.tkoc</groupId>
-            <artifactId>javafx-test</artifactId>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
@@ -43,5 +35,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

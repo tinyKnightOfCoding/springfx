@@ -21,15 +21,15 @@
         <module>javafxcore</module>
         <module>springfxcontext</module>
         <module>javafxtest</module>
+        <module>springfxcore</module>
+        <module>springfxtestutil</module>
+        <module>springfxutil</module>
     </modules>
 
     <properties>
         <!--PROJECT CONFIGURATION-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-        <!--PROJECT VERSION-->
-        <springfx.version>0.3-SNAPSHOT</springfx.version>
 
         <!--LANGUAGE VERSIONS-->
         <kotlin.version>1.0.6</kotlin.version>
@@ -106,6 +106,22 @@
                 <groupId>ch.tkoc</groupId>
                 <artifactId>springfx-context</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.tkoc</groupId>
+                <artifactId>springfx-util</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.tkoc</groupId>
+                <artifactId>springfx-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.tkoc</groupId>
+                <artifactId>springfx-test-util</artifactId>
+                <version>${project.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>ch.tkoc</groupId>
