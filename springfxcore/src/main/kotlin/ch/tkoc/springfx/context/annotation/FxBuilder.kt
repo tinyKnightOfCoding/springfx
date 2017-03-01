@@ -4,4 +4,4 @@ import ch.tkoc.springfx.context.JavaFxBeanBuilder
 import kotlin.reflect.KClass
 
 
-annotation class FxBuilder<T: JavaFxBeanBuilder>(val type: KClass<T>)
+annotation class FxBuilder<T: JavaFxBeanBuilder>(val builderType: KClass<T>)

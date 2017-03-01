@@ -17,12 +17,19 @@ class JavaFxBeanBuilderFactory : BuilderFactory, ApplicationContextAware {
 
     override fun setApplicationContext(applicationContext: ApplicationContext) {
         appContext = applicationContext
-        val tempBuilderContext = mutableMapOf<Class<*>, Class<JavaFxBeanBuilder>>()
-        appContext.getBeanNamesForAnnotation(FxComponent::class.java).map { beanName ->
-            tempBuilderContext[appContext.getType(beanName)] = appContext.getType(beanName).findAnnotation<FxBuilder<JavaFxBeanBuilder>>()!!.type.java
-        }
-        builderContext = tempBuilderContext
+        builderContext = extractBuilderContext()
     }
+
+    private fun extractBuilderContext(): MutableMap<Class<*>, Class<JavaFxBeanBuilder>> {
+        return mutableMapOf<Class<*>, Class<JavaFxBeanBuilder>>().apply {
+            appContext.getBeanNamesForAnnotation(FxComponent::class.java)
+                    .map(appContext::getType).forEach { put(it, findBuilderForType(it)) }
+        }
+    }
+
+    private fun findBuilderForType(type: Class<*>) : Class<JavaFxBeanBuilder> =
+            type.findAnnotation<FxBuilder<JavaFxBeanBuilder>>()?.builderType?.java
+            ?: JavaFxBeanBuilder::class.java
 
     override fun getBuilder(type: Class<*>?): Builder<*>? = builderContext[type]?.newInstance()?.apply {
         bean = appContext.getBean(type) as Node
