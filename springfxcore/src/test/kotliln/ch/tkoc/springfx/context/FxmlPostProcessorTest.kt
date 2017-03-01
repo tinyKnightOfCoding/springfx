@@ -1,6 +1,8 @@
 package ch.tkoc.springfx.context
 
 import ch.tkoc.springfx.util.launchDummyApplication
+import com.nhaarman.mockito_kotlin.*
+import javafx.util.BuilderFactory
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.BeforeClass
@@ -9,7 +11,8 @@ import org.junit.Test
 
 class FxmlPostProcessorTest {
 
-    lateinit var processor: FxmlPostProcessor
+    lateinit var processor: JavaFxBeanPostProcessor
+    lateinit var builderFactory: BuilderFactory
 
     companion object {
         @BeforeClass
@@ -19,7 +22,8 @@ class FxmlPostProcessorTest {
 
     @Before
     fun setUp() {
-        processor = FxmlPostProcessor()
+        builderFactory = mock {  }
+        processor = JavaFxBeanPostProcessor(builderFactory)
     }
 
     @Test
@@ -34,5 +38,12 @@ class FxmlPostProcessorTest {
         val root = DifferentLoginForm()
         processor.postProcessBeforeInitialization(root, "someName")
         assertEquals(3, root.children.size)
+    }
+
+    @Test
+    fun builderCalled() {
+        whenever(builderFactory.getBuilder(any())).thenReturn(null)
+        processor.postProcessBeforeInitialization(LoginForm(), "someName")
+        verify(builderFactory, atLeastOnce()).getBuilder(any())
     }
 }
