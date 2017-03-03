@@ -44,10 +44,6 @@
     <dependencies>
         <!--TEST DEPENDENCIES-->
         <dependency>
-            <groupId>ch.tkoc</groupId>
-            <artifactId>springfx-test-util</artifactId>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>

@@ -29,6 +29,11 @@
             <artifactId>springfx-util</artifactId>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>ch.tkoc</groupId>
+            <artifactId>springfx-test-util</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
