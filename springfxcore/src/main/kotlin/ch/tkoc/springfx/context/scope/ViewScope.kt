@@ -1,13 +1,11 @@
-package ch.tkoc.context.scope
+package ch.tkoc.springfx.context.scope
 
 import org.springframework.beans.factory.ObjectFactory
 import org.springframework.beans.factory.config.Scope
 import org.springframework.context.ApplicationContext
 import org.springframework.context.ApplicationContextAware
-import org.springframework.stereotype.Component
 
-//TODO write unit tests, as it gets complicated
-@Component("ch.tkoc.context.scope.viewScope")
+
 class ViewScope : Scope, ApplicationContextAware {
 
     lateinit var appContext: ApplicationContext
