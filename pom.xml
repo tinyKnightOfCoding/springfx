@@ -22,6 +22,7 @@
         <module>springfxtestutil</module>
         <module>springfxutil</module>
         <module>springfxall</module>
+        <module>springfxexample</module>
     </modules>
 
     <properties>

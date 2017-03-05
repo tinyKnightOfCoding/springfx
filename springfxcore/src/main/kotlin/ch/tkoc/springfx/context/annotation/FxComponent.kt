@@ -6,5 +6,3 @@ import java.net.URL
 
 @Component
 annotation class FxComponent(val filename: String = "")
-
-fun FxComponent.findLocation(type: Class<*>) : URL = type.getResource("${if(filename.isEmpty()) type.simpleName else filename}.fxml")
