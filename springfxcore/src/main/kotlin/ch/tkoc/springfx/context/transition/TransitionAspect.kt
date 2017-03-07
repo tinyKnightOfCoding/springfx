@@ -1,15 +1,20 @@
 package ch.tkoc.springfx.context.transition
 
+import ch.tkoc.springfx.SpringFxApplication
 import org.aspectj.lang.annotation.AfterReturning
 import org.aspectj.lang.annotation.Aspect
 import org.aspectj.lang.annotation.Pointcut
 
 @Aspect
-class TransitionAspect {
+class TransitionAspect(val springFxApplication: SpringFxApplication) {
 
     @Pointcut("execution(@ch.tkoc.springfx.context.annotation.FxTransition kotlin.String *(..))")
     fun transitionPointcut() {}
 
     @AfterReturning(pointcut = "transitionPointcut()", returning = "code")
-    fun doTransition(code: String) {}
+    fun doTransition(code: String) : Unit = when(code) {
+        ":keep" -> {}
+        ":exit" -> springFxApplication.exit()
+        else -> springFxApplication.showView(code)
+    }
 }

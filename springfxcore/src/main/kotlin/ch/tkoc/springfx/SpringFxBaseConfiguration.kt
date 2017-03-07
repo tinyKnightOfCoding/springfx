@@ -14,6 +14,9 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy
 @EnableAspectJAutoProxy
 class SpringFxBaseConfiguration {
 
+    @Bean(name = arrayOf("ch.tkoc.springfx.context.springFxApplcication"))
+    fun springFxApplication() = springFxApplication!!
+
     @Bean(name = arrayOf("ch.tkoc.springfx.context.javaFxBeanBuilderFactory"))
     fun javaFxBeanBuilderFactory() = JavaFxBeanBuilderFactory()
 
@@ -29,5 +32,5 @@ class SpringFxBaseConfiguration {
     }
 
     @Bean(name = arrayOf("ch.tkoc.springfx.context.transition.transitionAspect"))
-    fun transitionAspect() = TransitionAspect()
+    fun transitionAspect(springFxApplication: SpringFxApplication) = TransitionAspect(springFxApplication)
 }
