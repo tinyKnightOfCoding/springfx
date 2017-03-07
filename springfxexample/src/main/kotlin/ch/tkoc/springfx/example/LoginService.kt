@@ -13,7 +13,7 @@ class LoginService {
 
     var loggedIn: Boolean = false
 
-    private fun update() = credentials!!.let { (username, password) ->
+    private fun update() = credentials!!.apply {
         loggedIn = username == "kenneth" && password == "banana"
     }
 }
