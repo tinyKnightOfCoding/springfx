@@ -17,6 +17,7 @@ class JavaFxBeanPostProcessor(val builderFactory: BuilderFactory) : BeanPostProc
                 if (bean is Node) {
                     loadFxmlForBean(bean, annotation)
                 }
+                return bean
             } ?: bean
 
     fun loadFxmlForBean(bean: Node, fxComponent: FxComponent) = FXMLLoader().apply {

@@ -14,7 +14,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy
 @EnableAspectJAutoProxy
 class SpringFxBaseConfiguration {
 
-    @Bean(name = arrayOf("ch.tkoc.springfx.context.springFxApplcication"))
+    @Bean(name = arrayOf("ch.tkoc.springfx.springFxApplication"))
     fun springFxApplication() = springFxApplication!!
 
     @Bean(name = arrayOf("ch.tkoc.springfx.context.javaFxBeanBuilderFactory"))

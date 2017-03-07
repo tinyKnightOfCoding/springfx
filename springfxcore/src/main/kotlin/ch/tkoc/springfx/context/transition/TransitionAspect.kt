@@ -8,7 +8,7 @@ import org.aspectj.lang.annotation.Pointcut
 @Aspect
 class TransitionAspect(val springFxApplication: SpringFxApplication) {
 
-    @Pointcut("execution(@ch.tkoc.springfx.context.annotation.FxTransition kotlin.String *(..))")
+    @Pointcut("execution(@ch.tkoc.springfx.context.annotation.FxTransition String *(..))")
     fun transitionPointcut() {}
 
     @AfterReturning(pointcut = "transitionPointcut()", returning = "code")
