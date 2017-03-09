@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 class LoginController @Autowired constructor(val loginService: LoginService) {
 
     @FxTransition
-    fun tryToLogin(username: String, password: String) : String {
+    fun tryLogin(username: String, password: String) : String {
         loginService.credentials = Credentials(username, password)
         if(loginService.loggedIn) {
             return ":end"
