@@ -10,8 +10,10 @@ import javafx.scene.control.PasswordField
 import javafx.scene.control.TextField
 import javafx.scene.layout.FlowPane
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Component
 
 @View(initial = true)
+@Component
 class LoginView @Autowired constructor(val loginController: LoginController): FlowPane() {
 
     val username: TextField get() = lookup("#username")!! as TextField

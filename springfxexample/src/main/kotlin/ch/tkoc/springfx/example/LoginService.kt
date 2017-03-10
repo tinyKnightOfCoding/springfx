@@ -7,7 +7,7 @@ class LoginService {
 
     var credentials: Credentials? = null
         set(value) {
-            field = credentials
+            field = value
             update()
         }
 
