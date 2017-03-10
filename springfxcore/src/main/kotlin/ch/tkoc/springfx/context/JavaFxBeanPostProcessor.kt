@@ -16,7 +16,6 @@ class JavaFxBeanPostProcessor(val builderFactory: BuilderFactory) : BeanPostProc
         javaClass.getResource(it.filename)
     } ?: javaClass.getResource("${javaClass.simpleName}.fxml")
 
-
     override fun postProcessBeforeInitialization(bean: Any, beanName: String?): Any = when (bean) {
         is Parent -> processFxComponent(bean)
         else -> bean
