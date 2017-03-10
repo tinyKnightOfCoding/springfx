@@ -1,9 +1,7 @@
 package ch.tkoc.springfx.context
 
-import ch.tkoc.springfx.context.annotation.FxBuilder
-import ch.tkoc.springfx.context.annotation.FxComponent
+import ch.tkoc.springfx.context.annotation.FxmlConfig
 import javafx.scene.layout.FlowPane
 
-@FxBuilder<CustomBuilder>(CustomBuilder::class)
-@FxComponent(filename = "LoginForm")
+@FxmlConfig(builderType = CustomBuilder::class, filename = "LoginForm")
 class CustomBuilderLoginForm : FlowPane()
