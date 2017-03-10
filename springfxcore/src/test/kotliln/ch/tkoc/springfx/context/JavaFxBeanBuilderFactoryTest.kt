@@ -31,7 +31,7 @@ class JavaFxBeanBuilderFactoryTest {
     @Test
     fun correctBean() {
         appContext = mock {
-            on { getBeanNamesForAnnotation(any()) } doReturn arrayOf("loginForm")
+            on { getBeanNamesForType(any<Class<*>>()) } doReturn arrayOf("loginForm")
             on { getType(any()) } doReturn LoginForm::class.java
         }
         builderFactory.setApplicationContext(appContext)
@@ -42,7 +42,7 @@ class JavaFxBeanBuilderFactoryTest {
     @Test
     fun returnsBuilderForLoginForm() {
         appContext = mock {
-            on { getBeanNamesForAnnotation(any()) } doReturn arrayOf("loginForm")
+            on { getBeanNamesForType(any<Class<*>>()) } doReturn arrayOf("loginForm")
             on { getType(any()) } doReturn LoginForm::class.java
             on { getBean(any<Class<*>>()) } doReturn LoginForm()
         }
@@ -53,7 +53,7 @@ class JavaFxBeanBuilderFactoryTest {
     @Test
     fun returnsBuilderWhichReturnsLoginForm() {
         appContext = mock {
-            on { getBeanNamesForAnnotation(any()) } doReturn arrayOf("loginForm")
+            on { getBeanNamesForType(any<Class<*>>()) } doReturn arrayOf("loginForm")
             on { getType(any()) } doReturn LoginForm::class.java
             on { getBean(any<Class<*>>()) } doReturn LoginForm()
         }
@@ -64,7 +64,7 @@ class JavaFxBeanBuilderFactoryTest {
     @Test
     fun returnsNullForFlowPane() {
         appContext = mock {
-            on { getBeanNamesForAnnotation(any()) } doReturn arrayOf("loginForm")
+            on { getBeanNamesForType(any<Class<*>>()) } doReturn arrayOf("loginForm")
             on { getType(any()) } doReturn LoginForm::class.java
             on { getBean(any<Class<*>>()) } doReturn LoginForm()
         }
@@ -75,11 +75,21 @@ class JavaFxBeanBuilderFactoryTest {
     @Test
     fun customBuilder() {
         appContext = mock {
-            on { getBeanNamesForAnnotation(any())} doReturn arrayOf("customBuilderLoginForm")
-            on { getType(any())} doReturn CustomBuilderLoginForm::class.java
-            on { getBean(any<Class<*>>())} doReturn CustomBuilderLoginForm()
+            on { getBeanNamesForType(any<Class<*>>()) } doReturn arrayOf("customBuilderLoginForm")
+            on { getType(any()) } doReturn CustomBuilderLoginForm::class.java
+            on { getBean(any<Class<*>>()) } doReturn CustomBuilderLoginForm()
         }
         builderFactory.setApplicationContext(appContext)
         assertTrue(builderFactory.getBuilder(CustomBuilderLoginForm::class.java) is CustomBuilder)
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun badBuilder() {
+        appContext = mock {
+            on { getBeanNamesForType(any<Class<*>>()) } doReturn arrayOf("badBuilderLoginForm")
+            on { getType(any()) } doReturn BadBuilderLoginForm::class.java
+            on { getBean(any<Class<*>>()) } doReturn BadBuilderLoginForm()
+        }
+        builderFactory.setApplicationContext(appContext)
     }
 }

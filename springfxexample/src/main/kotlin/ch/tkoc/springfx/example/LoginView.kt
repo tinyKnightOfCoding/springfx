@@ -1,9 +1,7 @@
 package ch.tkoc.springfx.example
 
-import ch.tkoc.springfx.context.annotation.FxComponent
-import ch.tkoc.springfx.context.annotation.FxView
+import ch.tkoc.springfx.context.annotation.View
 import javafx.scene.layout.FlowPane
 
-@FxView(initial = true)
-@FxComponent
+@View(initial = true)
 class LoginView : FlowPane()
