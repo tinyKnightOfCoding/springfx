@@ -23,7 +23,7 @@ class ViewScope : Scope, ApplicationContextAware {
     override fun registerDestructionCallback(name: String, callback: Runnable) {
     }
 
-    override fun getConversationId(): String = "FxView"
+    override fun getConversationId(): String = "View"
 
     override fun get(name: String, objectFactory: ObjectFactory<*>): Any = objects.getOrPut(name, { objectFactory.`object` })
 
