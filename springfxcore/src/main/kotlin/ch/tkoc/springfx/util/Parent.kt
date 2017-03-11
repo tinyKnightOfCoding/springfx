@@ -2,6 +2,8 @@ package ch.tkoc.springfx.util
 
 import ch.tkoc.springfx.context.annotation.FxmlConfig
 import ch.tkoc.springfx.context.annotation.NoFxml
+import ch.tkoc.springfx.context.annotation.TransitionIn
+import ch.tkoc.springfx.context.annotation.TransitionOut
 import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.util.BuilderFactory
@@ -25,3 +27,9 @@ fun Parent.loadFxml(customBuilderFactory: BuilderFactory? = null, fxmlLoader: FX
 fun Parent.createFxmlUrl(fileNameProvider: () -> String? = { javaClass.findAnnotation<FxmlConfig>()?.filename }): URL = fileNameProvider()?.let {
     return javaClass.getResource(it)
 } ?: javaClass.getResource("${javaClass.simpleName}.fxml")
+
+fun Parent.invokeTransitionIn() = invokeMethodsWithAnnotation<TransitionIn>()
+
+fun Parent.invokeTransitionOut() = invokeMethodsWithAnnotation<TransitionOut>()
+
+inline fun <reified A : Annotation> Parent.invokeMethodsWithAnnotation() = javaClass.methods.filter { it.findAnnotation<A>() != null && it.parameterCount == 0 }.forEach { it.invoke(this) }

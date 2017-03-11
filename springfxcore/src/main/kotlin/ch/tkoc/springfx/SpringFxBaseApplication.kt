@@ -1,15 +1,13 @@
 package ch.tkoc.springfx
 
-import ch.tkoc.springfx.context.annotation.TransitionIn
-import ch.tkoc.springfx.context.annotation.TransitionOut
 import ch.tkoc.springfx.context.annotation.View
-import ch.tkoc.springfx.util.findAnnotation
+import ch.tkoc.springfx.util.invokeTransitionIn
+import ch.tkoc.springfx.util.invokeTransitionOut
 import javafx.application.Application
 import javafx.application.Platform
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.stage.Stage
-import org.springframework.core.annotation.AnnotationUtils
 
 
 fun launch(configurationClass: Class<*>) {
@@ -56,15 +54,7 @@ class SpringFxBaseApplication : Application(), SpringFxApplication {
         }
     }
 
-    fun lookupView(beanName: String) : Parent = applicationContext.getBean(beanName, Parent::class.java)
-
-
-    fun Parent.invokeTransitionIn() = invokeMethodsWithAnnotation<TransitionIn>()
-
-    fun Parent.invokeTransitionOut() = invokeMethodsWithAnnotation<TransitionOut>()
-
-    inline fun <reified A : Annotation> Parent.invokeMethodsWithAnnotation() = javaClass.methods.filter { it.findAnnotation<A>() != null && it.parameterCount == 0 }.forEach { it.invoke(this) }
-
+    fun lookupView(beanName: String) : Parent = applicationContext.getBean(beanName, Parent::class.java) //TODO application Context
 
     override fun exit() = Platform.exit()
 }
