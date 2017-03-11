@@ -12,7 +12,7 @@ class LoginController @Autowired constructor(val loginService: LoginService) {
     fun tryLogin(username: String, password: String) : String {
         loginService.credentials = Credentials(username, password)
         if(loginService.loggedIn) {
-            return ":exit"
+            return "dataView"
         }
         return ":keep"
     }
