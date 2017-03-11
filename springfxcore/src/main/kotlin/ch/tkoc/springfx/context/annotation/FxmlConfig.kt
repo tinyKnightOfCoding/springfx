@@ -4,4 +4,4 @@ import ch.tkoc.springfx.context.JavaFxBeanBuilder
 import kotlin.reflect.KClass
 
 
-annotation class FxmlConfig(val builderType: KClass<*> = JavaFxBeanBuilder::class, val filename: String = "")
+annotation class FxmlConfig(val builderType: KClass<*> = JavaFxBeanBuilder::class, val filename: String)

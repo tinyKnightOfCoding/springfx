@@ -25,10 +25,6 @@
             <groupId>ch.tkoc</groupId>
             <artifactId>springfx-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>ch.tkoc</groupId>
-            <artifactId>springfx-util</artifactId>
-        </dependency>
     </dependencies>
 
     <build>

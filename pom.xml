@@ -20,7 +20,6 @@
     <modules>
         <module>springfxcore</module>
         <module>springfxtestutil</module>
-        <module>springfxutil</module>
         <module>springfxall</module>
         <module>springfxexample</module>
     </modules>
@@ -111,11 +110,6 @@
             <dependency>
                 <groupId>ch.tkoc</groupId>
                 <artifactId>springfx-context</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ch.tkoc</groupId>
-                <artifactId>springfx-util</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

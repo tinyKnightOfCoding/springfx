@@ -13,15 +13,15 @@ fun Parent.loadFxmlIfNotAnnotated(builderFactory: BuilderFactory? = null) {
     }
 }
 
-fun Parent.loadFxml(builderFactory: BuilderFactory? = null) = FXMLLoader().apply {
-    location = findLocation()
-    this.builderFactory = builderFactory
+fun Parent.loadFxml(customBuilderFactory: BuilderFactory? = null, fxmlLoader: FXMLLoader = FXMLLoader()) = fxmlLoader.apply {
+    location = createFxmlUrl()
+    if(customBuilderFactory != null) {
+        builderFactory = customBuilderFactory
+    }
     setRoot(this)
     load()
 }
 
-private fun Parent.findLocation(): URL = javaClass.findAnnotation<FxmlConfig>()?.let {
-    javaClass.getResource(it.filename)
+fun Parent.createFxmlUrl(fileNameProvider: () -> String? = { javaClass.findAnnotation<FxmlConfig>()?.filename }): URL = fileNameProvider()?.let {
+    return javaClass.getResource(it)
 } ?: javaClass.getResource("${javaClass.simpleName}.fxml")
-
-

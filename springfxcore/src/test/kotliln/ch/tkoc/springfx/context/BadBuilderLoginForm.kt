@@ -3,5 +3,5 @@ package ch.tkoc.springfx.context
 import ch.tkoc.springfx.context.annotation.FxmlConfig
 import javafx.scene.layout.FlowPane
 
-@FxmlConfig(builderType = MutableMap::class)
+@FxmlConfig(builderType = MutableMap::class, filename = "LoginForm.fxml")
 class BadBuilderLoginForm: FlowPane()
