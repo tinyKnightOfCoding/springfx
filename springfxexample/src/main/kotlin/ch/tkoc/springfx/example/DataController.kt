@@ -17,4 +17,10 @@ class DataController @Autowired constructor(val dataService: DataService) {
     fun setUp() {
         data.setAll(dataService.data())
     }
+
+    fun filter(regex: String) : Unit {
+        regex.toRegex().apply {
+            data.setAll(dataService.data().filter{ matches(it) })
+        }
+    }
 }

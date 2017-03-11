@@ -4,6 +4,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.*?>
 <fx:root type="FlowPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <TextField fx:id="filter" promptText="Search filter"/>
+    <TextField fx:id="filterText" promptText="Search filter"/>
     <Button fx:id="submit" mnemonicParsing="false" text="Update list"/>
 </fx:root>
