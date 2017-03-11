@@ -32,4 +32,7 @@ fun Parent.invokeTransitionIn() = invokeMethodsWithAnnotation<TransitionIn>()
 
 fun Parent.invokeTransitionOut() = invokeMethodsWithAnnotation<TransitionOut>()
 
-inline fun <reified A : Annotation> Parent.invokeMethodsWithAnnotation() = javaClass.methods.filter { it.findAnnotation<A>() != null && it.parameterCount == 0 }.forEach { it.invoke(this) }
+inline fun <reified A : Annotation> Parent.invokeMethodsWithAnnotation() = findMethodsWithAnnotation<A>().forEach { it.invoke(this) }
+
+//TODO code smell #findMethodsWithAnnotationAndNoArguments
+inline fun <reified A : Annotation> Parent.findMethodsWithAnnotation() = javaClass.methods.filter { it.findAnnotation<A>() != null && it.parameterCount == 0 }
