@@ -8,11 +8,11 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping("/users", produces = arrayOf(MediaType.APPLICATION_JSON_UTF8_VALUE), consumes = arrayOf(MediaType.APPLICATION_JSON_UTF8_VALUE))
-class UserController {
+class UserDataController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun createUser(@RequestBody @Valid data: RegisterRequest) = println(data)
+    fun createUser(@RequestBody @Valid data: RegisterRequest) {}
 
     @InitBinder
     fun addValidator(webDataBinder: WebDataBinder) {
