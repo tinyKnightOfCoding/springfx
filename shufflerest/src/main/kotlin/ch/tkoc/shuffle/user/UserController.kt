@@ -5,10 +5,14 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
 
-@RestController("/users")
+@RestController()
 class UserController {
 
-    @RequestMapping(method = arrayOf(RequestMethod.POST), consumes = arrayOf(MediaType.APPLICATION_JSON_VALUE), produces = arrayOf(MediaType.APPLICATION_JSON_VALUE))
+    @RequestMapping(path= arrayOf("/users"), method = arrayOf(RequestMethod.POST), consumes = arrayOf(MediaType.APPLICATION_JSON_VALUE), produces = arrayOf(MediaType.APPLICATION_JSON_VALUE))
     @ResponseStatus(HttpStatus.CREATED)
-    fun createUsers(@RequestBody data: RegisterRequest) = println(data)
+    fun createUser(@RequestBody data: RegisterRequest) = println(data)
+
+    @RequestMapping(path = arrayOf("/users/{email}"), method = arrayOf(RequestMethod.GET), produces = arrayOf(MediaType.APPLICATION_JSON_VALUE))
+    @ResponseStatus(HttpStatus.OK)
+    fun readUser(@PathVariable("email") email: String) = println(email)
 }
