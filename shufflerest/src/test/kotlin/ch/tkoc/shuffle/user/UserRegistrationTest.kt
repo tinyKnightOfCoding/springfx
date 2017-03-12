@@ -1,17 +1,18 @@
 package ch.tkoc.shuffle.user
 
+import com.nhaarman.mockito_kotlin.given
+import com.nhaarman.mockito_kotlin.verify
 import org.apache.tomcat.util.codec.binary.Base64
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.mock.mockito.SpyBean
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.http.*
 import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.junit4.SpringRunner
-import java.nio.charset.Charset
-import java.util.*
 
 @RunWith(SpringRunner::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -20,9 +21,11 @@ class UserRegistrationTest {
     @Autowired
     lateinit var restTemplate: TestRestTemplate
 
+    @SpyBean
+    lateinit var userDataService: UserDataService
+
     private fun createHeaders(username: String, password: String) = HttpHeaders().apply {
-        val authHeader = Base64.encodeBase64("$username:$password".toByteArray(Charset.forName("US-ASCII")))
-        set("Authorization", "Basic $authHeader")
+        set ("Authorization", "Basic dXNlcjpwYXNzd29yZA==")
     }
 
     @Test
@@ -74,6 +77,12 @@ class UserRegistrationTest {
     fun readUser_NotLoggedIn() {
         val response = restTemplate.getForEntity("/users/foo@bar", String::class.java)
         assertEquals(HttpStatus.UNAUTHORIZED, response.statusCode)
+    }
+
+    @Test
+    fun loadUserByUsernameCalled() {
+        val response2 = restTemplate.exchange("/users/foo@bar.com", HttpMethod.GET, HttpEntity<String>(createHeaders("betterWeather", "password123")), String::class.java)
+        verify(userDataService).loadUserByUsername("betterWeather2")
     }
 
     @Test

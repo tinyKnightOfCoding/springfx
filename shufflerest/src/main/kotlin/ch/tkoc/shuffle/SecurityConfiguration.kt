@@ -1,5 +1,7 @@
 package ch.tkoc.shuffle
 
+import ch.tkoc.shuffle.user.UserDataService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
@@ -7,12 +9,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfiguration : WebSecurityConfigurerAdapter() {
+class SecurityConfiguration @Autowired constructor(val userDataService: UserDataService): WebSecurityConfigurerAdapter() {
 
-    override fun configure(http: HttpSecurity): Unit {
-        http.authorizeRequests()
-                .antMatchers("/users").anonymous()
-                .anyRequest().authenticated()
-                .and().csrf().disable()
+    override fun configure(http: HttpSecurity) {
+        http.authorizeRequests().antMatchers("/**").hasRole("USER").and().httpBasic()
     }
 }
