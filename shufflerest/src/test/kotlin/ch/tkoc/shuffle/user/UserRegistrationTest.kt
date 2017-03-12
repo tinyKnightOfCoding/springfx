@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
+import org.springframework.test.annotation.DirtiesContext
 import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
@@ -27,13 +28,21 @@ class UserRegistrationTest {
     }
 
     @Test
+    @DirtiesContext
     fun createUser_UserAlreadyExists() {
-        fail()
+        val response = restTemplate.postForEntity("/users", RegisterRequest("betterWeather", "foo@bar.com", "password123"), String::class.java)
+        assertEquals(HttpStatus.CREATED, response.statusCode)
+        val response2 = restTemplate.postForEntity("/users", RegisterRequest("betterWeather", "foo@bar.com", "password123"), String::class.java)
+        assertEquals(HttpStatus.CONFLICT, response2.statusCode)
+        assertNull(response.body)
     }
 
     @Test
+    @DirtiesContext
     fun createUser() {
-        fail()
+        val response = restTemplate.postForEntity("/users", RegisterRequest("betterWeather", "foo@bar.com", "password123"), String::class.java)
+        assertEquals(HttpStatus.CREATED, response.statusCode)
+        assertNull(response.body)
     }
 
     @Test
