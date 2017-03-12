@@ -29,5 +29,11 @@ class UserDataController @Autowired constructor(val userDataService: UserDataSer
 
     @GetMapping("/{email}")
     @ResponseStatus(HttpStatus.OK)
-    fun readUser(@PathVariable("email") email: String) = println(email)
+    fun readUser(@PathVariable("email") searchEmail: String) : ResponseEntity<UserData> {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(userDataService.findFirst { searchEmail == email })
+        } catch(e: UserNotFoundException) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null)
+        }
+    }
 }
