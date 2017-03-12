@@ -47,7 +47,7 @@ class RegisterRequestValidatorTest {
         validator.validate(RegisterRequest(username="better_weather06", email="foo@bar.com", password="passwor"), errors)
         verify(errors).rejectValue("password", "password.invalid")
     }
-    
+
     @Test
     fun passwordOnlyLetters() {
         validator.validate(RegisterRequest(username="better_weather06", email="foo@bar.com", password="password"), errors)
