@@ -1,13 +1,11 @@
 package ch.tkoc.shuffle.user
 
-import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.WebDataBinder
 import org.springframework.web.bind.annotation.*
-import java.security.Principal
 import javax.validation.Valid
 
 @RestController
@@ -29,11 +27,11 @@ class UserDataController @Autowired constructor(val userDataService: UserDataSer
         webDataBinder.validator = RegisterRequestValidator()
     }
 
-    @GetMapping("/{email}")
+    @GetMapping("/{username}")
     @ResponseStatus(HttpStatus.OK)
-    fun readUser(@PathVariable("email") searchEmail: String) : ResponseEntity<UserData> {
+    fun readUser(@PathVariable("username") searchUsername: String) : ResponseEntity<UserData> {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(userDataService.findFirst { searchEmail == email })
+            return ResponseEntity.status(HttpStatus.OK).body(userDataService.findFirst { searchUsername == username })
         } catch(e: UserNotFoundException) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null)
         }
