@@ -23,6 +23,8 @@
         <module>springfxutil</module>
         <module>springfxall</module>
         <module>springfxexample</module>
+        <module>shufflerest</module>
+        <module>shufflerestintegrationtest</module>
     </modules>
 
     <properties>
