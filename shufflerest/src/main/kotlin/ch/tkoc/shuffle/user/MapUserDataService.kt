@@ -8,7 +8,7 @@ class MapUserDataService : UserDataService {
 
     val users = mutableSetOf<UserData>()
 
-    override fun loadUserByUsername(username: String): UserDetails = users.filter { it.username == username }.first()
+    override fun loadUserByUsername(username: String): UserDetails = findFirst { this.username == username }
 
     override fun create(registerRequest: RegisterRequest) {
         if(users.filter { registerRequest.username == it.username || registerRequest.email == it.email }.isNotEmpty()) {
