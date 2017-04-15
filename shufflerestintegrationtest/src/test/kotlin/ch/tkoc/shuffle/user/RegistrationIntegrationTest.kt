@@ -55,7 +55,7 @@ class RegistrationIntegrationTest {
     fun notAnonymous() {
         (userDetailsService as UserDataService).create(RegisterRequest("aUser", "foo@bar.com", "password1"))
         val response = restTemplate.exchange("/users", HttpMethod.POST, HttpEntity<Any>(createHeaders("aUser", "password1")), String::class.java)
-        assertEquals(HttpStatus.BAD_REQUEST, response.statusCode)
+        assertEquals(HttpStatus.FORBIDDEN, response.statusCode)
         verify(userDetailsService).loadUserByUsername("aUser")
     }
 
