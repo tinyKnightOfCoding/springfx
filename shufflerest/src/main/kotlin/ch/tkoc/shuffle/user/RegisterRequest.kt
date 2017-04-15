@@ -1,6 +1,16 @@
 package ch.tkoc.shuffle.user
 
+import org.springframework.security.crypto.password.PasswordEncoder
+
 data class RegisterRequest(val username: String = "", val email: String = "", val password: String = "") {
 
-    fun createUserData() : UserData = UserData(username, password, email)
+    fun createUserData(passwordEncoder: PasswordEncoder? = null) : UserData = UserData(username, encodedPassword(passwordEncoder) , email)
+
+    fun encodedPassword(passwordEncoder: PasswordEncoder?) : String {
+        if (passwordEncoder == null) {
+            return password
+        }
+        return passwordEncoder.encode(password)
+    }
+
 }

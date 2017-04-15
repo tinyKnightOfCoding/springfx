@@ -3,6 +3,7 @@ package ch.tkoc.shuffle.user
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
+import org.springframework.security.crypto.password.PasswordEncoder
 
 
 class MapUserDataServiceTest {
@@ -11,7 +12,11 @@ class MapUserDataServiceTest {
 
     @Before
     fun setUp() {
-        userDataService = MapUserDataService()
+        userDataService = MapUserDataService(object : PasswordEncoder {
+            override fun encode(p0: CharSequence): String = p0.toString()
+
+            override fun matches(p0: CharSequence, p1: String): Boolean = p1.equals(p0)
+        })
     }
 
     @Test(expected = UserNotFoundException::class)
