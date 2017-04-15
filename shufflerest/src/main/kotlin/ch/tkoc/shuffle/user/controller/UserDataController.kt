@@ -1,5 +1,10 @@
-package ch.tkoc.shuffle.user
+package ch.tkoc.shuffle.user.controller
 
+import ch.tkoc.shuffle.user.UserAlreadyExistsException
+import ch.tkoc.shuffle.user.UserNotFoundException
+import ch.tkoc.shuffle.user.model.RegisterRequest
+import ch.tkoc.shuffle.user.model.UserData
+import ch.tkoc.shuffle.user.service.UserDataService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType

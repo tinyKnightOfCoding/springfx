@@ -1,4 +1,4 @@
-package ch.tkoc.shuffle.user
+package ch.tkoc.shuffle.user.model
 
 import org.springframework.security.crypto.password.PasswordEncoder
 

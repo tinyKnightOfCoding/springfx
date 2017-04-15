@@ -1,5 +1,6 @@
-package ch.tkoc.shuffle.user
+package ch.tkoc.shuffle.user.controller
 
+import ch.tkoc.shuffle.user.model.RegisterRequest
 import org.springframework.stereotype.Component
 import org.springframework.validation.Errors
 import org.springframework.validation.Validator

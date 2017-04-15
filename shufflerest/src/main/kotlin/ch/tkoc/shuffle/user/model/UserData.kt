@@ -1,4 +1,4 @@
-package ch.tkoc.shuffle.user
+package ch.tkoc.shuffle.user.model
 
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails

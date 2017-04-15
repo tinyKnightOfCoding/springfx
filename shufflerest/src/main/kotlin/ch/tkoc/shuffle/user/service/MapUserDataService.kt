@@ -1,12 +1,14 @@
-package ch.tkoc.shuffle.user
+package ch.tkoc.shuffle.user.service
 
-import org.springframework.beans.factory.annotation.Autowired
+import ch.tkoc.shuffle.user.UserAlreadyExistsException
+import ch.tkoc.shuffle.user.UserNotFoundException
+import ch.tkoc.shuffle.user.model.RegisterRequest
+import ch.tkoc.shuffle.user.model.UserData
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.crypto.password.PasswordEncoder
-import org.springframework.stereotype.Service
 
-@Service
-class MapUserDataService @Autowired constructor(val passwordEncoder: PasswordEncoder) : UserDataService {
+//TODO this class is open because it needs to be mocked. find way around it
+open class MapUserDataService(val passwordEncoder: PasswordEncoder) : UserDataService {
 
     val users = mutableSetOf<UserData>()
 

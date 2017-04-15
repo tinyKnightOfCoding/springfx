@@ -1,5 +1,7 @@
 package ch.tkoc.shuffle.user
 
+import ch.tkoc.shuffle.user.controller.RegisterRequestValidator
+import ch.tkoc.shuffle.user.model.RegisterRequest
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.never
 import com.nhaarman.mockito_kotlin.verify

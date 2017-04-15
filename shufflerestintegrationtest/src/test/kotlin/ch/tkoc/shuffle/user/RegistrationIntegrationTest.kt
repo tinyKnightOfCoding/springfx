@@ -1,5 +1,7 @@
 package ch.tkoc.shuffle.user
 
+import ch.tkoc.shuffle.user.model.RegisterRequest
+import ch.tkoc.shuffle.user.service.UserDataService
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.verify
 import org.apache.tomcat.util.codec.binary.Base64

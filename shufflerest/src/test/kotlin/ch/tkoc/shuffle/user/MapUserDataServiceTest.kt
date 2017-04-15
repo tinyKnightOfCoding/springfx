@@ -1,5 +1,8 @@
 package ch.tkoc.shuffle.user
 
+import ch.tkoc.shuffle.user.model.RegisterRequest
+import ch.tkoc.shuffle.user.model.UserData
+import ch.tkoc.shuffle.user.service.MapUserDataService
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
